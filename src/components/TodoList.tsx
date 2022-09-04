@@ -1,10 +1,14 @@
 import * as React from "react";
 import { Button, Input, Flex, Checkbox, Heading } from "@chakra-ui/react";
 
-function TodoListItems() {
+// Import these 2 to receiving components
+import store from "../store";
+import { observer } from "mobx-react";
+
+const TodoListItems = () => {
   return (
     <>
-      {[].map((todo: { id: number; text: string }) => (
+      {store.todos.map((todo: { id: number; text: string }) => (
         <Flex pt={2} key={todo.id}>
           <Checkbox />
           <Input mx={2} value={todo.text} />
@@ -13,15 +17,18 @@ function TodoListItems() {
       ))}
     </>
   );
-}
+};
 
-function TodoList() {
+const TodoListObserver = observer(TodoListItems);
+
+const TodoList = () => {
   return (
     <>
       <Heading>Todo List</Heading>
-      <TodoListItems />
+      {/* Wrap the component under observer */}
+      <TodoListObserver />
     </>
   );
-}
+};
 
 export default TodoList;

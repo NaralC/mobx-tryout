@@ -1,3 +1,5 @@
+import { makeAutoObservable } from "mobx"; // Add this to where we centralize our data
+
 // Standard interface and functions
 export interface Todo {
   id: number;
@@ -16,3 +18,21 @@ const addTodo = (todos: Todo[], text: string): Todo[] => [
     done: false,
   },
 ];
+
+// Here's the MobX part
+class Store {
+  todos: Todo[] = [];
+  newTodo: string = "";
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  addToDo() {
+    this.todos = addTodo(this.todos, this.newTodo);
+    this.newTodo = "";
+  }
+}
+
+const store = new Store();
+export default store;
