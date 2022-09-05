@@ -32,6 +32,10 @@ class Store {
     this.todos = addTodo(this.todos, this.newTodo);
     this.newTodo = "";
   }
+
+  removeTodo(id: number) {
+    this.todos = removeTodo(this.todos, id);
+  }
 }
 
 const store = new Store();

@@ -14,7 +14,7 @@ function TodoAdd() {
         value={store.newTodo}
         onChange={(e) => (store.newTodo = e.target.value)}
       />
-      <Button onClick={() => store.addToDo}>Add Todo</Button>
+      <Button onClick={() => store.addToDo()}>Add Todo</Button>
     </Grid>
   );
 }
