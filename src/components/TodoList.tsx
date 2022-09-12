@@ -5,7 +5,8 @@ import { Button, Input, Flex, Checkbox, Heading } from "@chakra-ui/react";
 import store, { Todo } from "../store";
 import { observer } from "mobx-react";
 
-const TodoListItems = () => {
+// Wrap the component under observer
+const TodoListItems: React.FC = observer(() => {
   return (
     <>
       {store.todos.map((todo: Todo) => (
@@ -21,16 +22,13 @@ const TodoListItems = () => {
       ))}
     </>
   );
-};
-
-const TodoListObserver = observer(TodoListItems);
+});
 
 const TodoList = () => {
   return (
     <>
       <Heading>Todo List</Heading>
-      {/* Wrap the component under observer */}
-      <TodoListObserver />
+      <TodoListItems />
     </>
   );
 };

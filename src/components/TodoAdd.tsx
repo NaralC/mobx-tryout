@@ -5,7 +5,7 @@ import { Button, Input, Grid } from "@chakra-ui/react";
 import store from "../store";
 import { observer } from "mobx-react";
 
-function TodoAdd() {
+const TodoAdd: React.FC = observer(() => {
   return (
     <Grid pt={2} templateColumns="5fr 1fr" columnGap="3">
       <Input
@@ -17,6 +17,6 @@ function TodoAdd() {
       <Button onClick={() => store.addToDo()}>Add Todo</Button>
     </Grid>
   );
-}
+});
 
-export default observer(TodoAdd);
+export default TodoAdd;
